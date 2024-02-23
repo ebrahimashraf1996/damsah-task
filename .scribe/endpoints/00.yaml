@@ -1,0 +1,109 @@
+name: 'PostData Apis'
+description: |-
+
+  PostData
+
+  Store Data into S3 and Relate it with Model Called PostData. If everything is okay, you'll get a 200 OK response.
+
+  Otherwise, the request will fail with a 500 error, and a response Error Message.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/post-data
+    metadata:
+      groupName: 'PostData Apis'
+      groupDescription: |-
+
+        PostData
+
+        Store Data into S3 and Relate it with Model Called PostData. If everything is okay, you'll get a 200 OK response.
+
+        Otherwise, the request will fail with a 500 error, and a response Error Message.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Post Data into S3'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      x-api-key: Secret-Api-key
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      files:
+        name: files
+        description: 'Minimum 1 item.'
+        required: true
+        example: 'files[0] image.png / files[1] video.mp4 / files[2] Doc.pdf'
+        type: list
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanBodyParameters:
+      files: 'files[0] image.png / files[1] video.mp4 / files[2] Doc.pdf'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"code": 200,"success": true, "message": "Uploaded Successfully"}'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: '{"code": 500,"success": true,"message": "Uploading Failed"}'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/get-data
+    metadata:
+      groupName: 'PostData Apis'
+      groupDescription: |-
+
+        Get All Posted Data
+
+        Store Data into S3 and Relate it with Model Called PostData. If everything is okay, you'll get a 200 response.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Posted Data'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      x-api-key: Secret-Api-key
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"code": 200,"success": true,"message": "List of Uploaded Data","data": [{"id": 44,"media": [{"id": 4,"file_path": "https://damsah.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png","mime_type": "image/png"}]},{"id": 45,"media": [{"id": 5,"file_path": "https://damsah.s3.eu-north-1.amazonaws.com/uploads/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png","mime_type": "image/png" },{"id": 6,"file_path": "https://damsah.s3.eu-north-1.amazonaws.com/uploads/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png","mime_type": "image/png"}]}]}'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

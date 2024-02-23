@@ -1,0 +1,115 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "PostData Documentation",
+        "_postman_id": "b22f6228-e7b1-4556-8723-919257adc734",
+        "description": "This Documentation explain How to Use these Apis , These Apis relate to the task of interview in a job",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "PostData Apis",
+            "description": "\nPostData\n\nStore Data into S3 and Relate it with Model Called PostData. If everything is okay, you'll get a 200 OK response.\n\nOtherwise, the request will fail with a 500 error, and a response Error Message.",
+            "item": [
+                {
+                    "name": "Post Data into S3",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post-data",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/post-data"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "Secret-Api-key"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"files\":\"files[0] image.png \\\/ files[1] video.mp4 \\\/ files[2] Doc.pdf\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"code\": 200,\"success\": true, \"message\": \"Uploaded Successfully\"}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\"code\": 500,\"success\": true,\"message\": \"Uploading Failed\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Posted Data",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/get-data",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/get-data"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "Secret-Api-key"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"code\": 200,\"success\": true,\"message\": \"List of Uploaded Data\",\"data\": [{\"id\": 44,\"media\": [{\"id\": 4,\"file_path\": \"https:\/\/damsah.s3.eu-north-1.amazonaws.com\/uploads\/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png\",\"mime_type\": \"image\/png\"}]},{\"id\": 45,\"media\": [{\"id\": 5,\"file_path\": \"https:\/\/damsah.s3.eu-north-1.amazonaws.com\/uploads\/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png\",\"mime_type\": \"image\/png\" },{\"id\": 6,\"file_path\": \"https:\/\/damsah.s3.eu-north-1.amazonaws.com\/uploads\/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png\",\"mime_type\": \"image\/png\"}]}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

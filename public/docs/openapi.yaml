@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  title: 'PostData Documentation'
+  description: 'This Documentation explain How to Use these Apis , These Apis relate to the task of interview in a job'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/post-data:
+    post:
+      summary: 'Post Data into S3'
+      operationId: postDataIntoS3
+      description: ''
+      parameters:
+        -
+          in: header
+          name: x-api-key
+          description: ''
+          example: Secret-Api-key
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 200
+                  success: true
+                  message: 'Uploaded Successfully'
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Uploaded Successfully'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 500
+                  success: true
+                  message: 'Uploading Failed'
+                properties:
+                  code:
+                    type: integer
+                    example: 500
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Uploading Failed'
+      tags:
+        - 'PostData Apis'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: list
+                  description: 'Minimum 1 item.'
+                  example: 'files[0] image.png / files[1] video.mp4 / files[2] Doc.pdf'
+              required:
+                - files
+      security: []
+  /api/get-data:
+    get:
+      summary: 'Get Posted Data'
+      operationId: getPostedData
+      description: ''
+      parameters:
+        -
+          in: header
+          name: x-api-key
+          description: ''
+          example: Secret-Api-key
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 200
+                  success: true
+                  message: 'List of Uploaded Data'
+                  data:
+                    -
+                      id: 44
+                      media:
+                        -
+                          id: 4
+                          file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                          mime_type: image/png
+                    -
+                      id: 45
+                      media:
+                        -
+                          id: 5
+                          file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png'
+                          mime_type: image/png
+                        -
+                          id: 6
+                          file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png'
+                          mime_type: image/png
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'List of Uploaded Data'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 44
+                        media:
+                          -
+                            id: 4
+                            file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                            mime_type: image/png
+                      -
+                        id: 45
+                        media:
+                          -
+                            id: 5
+                            file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png'
+                            mime_type: image/png
+                          -
+                            id: 6
+                            file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png'
+                            mime_type: image/png
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 44
+                        media:
+                          type: array
+                          example:
+                            -
+                              id: 4
+                              file_path: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                              mime_type: image/png
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 4
+                              file_path:
+                                type: string
+                                example: 'https://damsah.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                              mime_type:
+                                type: string
+                                example: image/png
+      tags:
+        - 'PostData Apis'
+      security: []
+tags:
+  -
+    name: 'PostData Apis'
+    description: "\nPostData\n\nStore Data into S3 and Relate it with Model Called PostData. If everything is okay, you'll get a 200 OK response.\n\nOtherwise, the request will fail with a 500 error, and a response Error Message."
