@@ -2,23 +2,18 @@
 
 namespace App\Services;
 
-use App\Http\Resources\UserApp\PostedDataResource;
-use App\Models\PostedData;
 use App\Traits\ApiResponseTrait;
 use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;
-use Illuminate\Support\Facades\DB;
 
 class GenerateUrlService
 {
 
     use ApiResponseTrait;
 
-    public function generateUrl($data, $expiry)
+    public function generateUrl($file_name, $expiry)
     {
-        $key = $data['file_name'];
-
-        return $this->generate($key, $expiry);
+        return $this->generate($file_name, $expiry);
     }
 
     protected function getConfig() {
@@ -48,6 +43,11 @@ class GenerateUrlService
             $expiry
         )->withMethod('POST')->getUri()->__toString();
         return $temporarySignedUrl;
+    }
+
+    public function createPath($id, $file_name) {
+        $path = 'uploads/' . $id . '/' . $file_name;
+        return $path;
     }
 
 }
