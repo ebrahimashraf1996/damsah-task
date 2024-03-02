@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Api\UserApp', 'middleware' => ['ApiSetting']], function () {
     Route::post('generate-url', 'GenerateUploadUrlController');
+    Route::get('get-data', 'GetPostedDataController');
+
 });

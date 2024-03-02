@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Api\UserApp;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UserApp\GenerateUrlRequest;
-use App\Http\Requests\Api\UserApp\PostDataRequest;
 use App\Models\PostedData;
 use App\Services\GenerateUrlService;
 use App\Services\MediaStoreService;
-use App\Services\PostedDataService;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
