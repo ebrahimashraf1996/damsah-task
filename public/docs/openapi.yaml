@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: 'PostData Documentation'
+  description: 'This Documentation explain How to Use these Apis , These Apis relate to the task of interview in a job'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/generate-url:
+    post:
+      summary: 'Generate Uploading Url'
+      operationId: generateUploadingUrl
+      description: ''
+      parameters:
+        -
+          in: header
+          name: x-api-key
+          description: ''
+          example: Secret-Api-key
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 200
+                  success: true
+                  message: 'Use This Url to Upload Your File'
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Use This Url to Upload Your File'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 500
+                  success: true
+                  message: 'Some Error Happened .. Please Contact With Developer'
+                  data: 'https://***.s3.us-east-2.amazonaws.com/image.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=*************&X-Amz-Date=*********&X-Amz-SignedHeaders=****&X-Amz-Expires=**&X-Amz-Signature=*******'
+                properties:
+                  code:
+                    type: integer
+                    example: 500
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Some Error Happened .. Please Contact With Developer'
+                  data:
+                    type: string
+                    example: 'https://***.s3.us-east-2.amazonaws.com/image.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=*************&X-Amz-Date=*********&X-Amz-SignedHeaders=****&X-Amz-Expires=**&X-Amz-Signature=*******'
+      tags:
+        - 'PostData Apis'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file_name:
+                  type: string.
+                  description: ''
+                  example: image.png
+      security: []
+  /api/get-data:
+    get:
+      summary: 'Get Posted Data'
+      operationId: getPostedData
+      description: ''
+      parameters:
+        -
+          in: header
+          name: x-api-key
+          description: ''
+          example: Secret-Api-key
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 200
+                  success: true
+                  message: 'List of Uploaded Data'
+                  data:
+                    -
+                      id: 44
+                      media:
+                        -
+                          id: 4
+                          file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                          mime_type: image/png
+                    -
+                      id: 45
+                      media:
+                        -
+                          id: 5
+                          file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png'
+                          mime_type: image/png
+                        -
+                          id: 6
+                          file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png'
+                          mime_type: image/png
+                properties:
+                  code:
+                    type: integer
+                    example: 200
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'List of Uploaded Data'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 44
+                        media:
+                          -
+                            id: 4
+                            file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                            mime_type: image/png
+                      -
+                        id: 45
+                        media:
+                          -
+                            id: 5
+                            file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png'
+                            mime_type: image/png
+                          -
+                            id: 6
+                            file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png'
+                            mime_type: image/png
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 44
+                        media:
+                          type: array
+                          example:
+                            -
+                              id: 4
+                              file_path: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                              mime_type: image/png
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 4
+                              file_path:
+                                type: string
+                                example: 'https://*****.s3.eu-north-1.amazonaws.com/uploads/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png'
+                              mime_type:
+                                type: string
+                                example: image/png
+      tags:
+        - 'PostData Apis'
+      security: []
+tags:
+  -
+    name: 'PostData Apis'
+    description: "\nGenerate Uploading Url\n\nIf everything is okay, you'll get a 200 Success response With a Url to Upload With it.\n\nOtherwise, the request will fail with a 500 error, and a response Error Message."

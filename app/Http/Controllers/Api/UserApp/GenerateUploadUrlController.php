@@ -12,8 +12,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-
-
+/**
+ * @group PostData Apis
+ *
+ * Generate Uploading Url
+ *
+ * If everything is okay, you'll get a 200 Success response With a Url to Upload With it.
+ *
+ * Otherwise, the request will fail with a 500 error, and a response Error Message.
+ *
+ */
 class GenerateUploadUrlController extends Controller
 {
     use ApiResponseTrait;
@@ -26,6 +34,17 @@ class GenerateUploadUrlController extends Controller
         $this->media_store = new MediaStoreService();
     }
 
+    /**
+     * Generate Uploading Url
+     * @header Content-Type application/json
+     * @header Accept application/json
+     * @header x-api-key Secret-Api-key
+     * @bodyParam file_name string. Example: image.png
+     * @response 500 {"code": 500,"success": true,"message": "Some Error Happened .. Please Contact With Developer", "data": "https://***.s3.us-east-2.amazonaws.com/image.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=*************&X-Amz-Date=*********&X-Amz-SignedHeaders=****&X-Amz-Expires=**&X-Amz-Signature=*******"}
+     * @response 200 {"code": 200,"success": true, "message": "Use This Url to Upload Your File"}
+     * @param GenerateUrlRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function __invoke(GenerateUrlRequest $request)
     {

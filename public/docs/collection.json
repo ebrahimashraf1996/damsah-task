@@ -1,0 +1,115 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "PostData Documentation",
+        "_postman_id": "62c8ff5f-5088-44f2-9efd-9a3a5679ab84",
+        "description": "This Documentation explain How to Use these Apis , These Apis relate to the task of interview in a job",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "PostData Apis",
+            "description": "\nGenerate Uploading Url\n\nIf everything is okay, you'll get a 200 Success response With a Url to Upload With it.\n\nOtherwise, the request will fail with a 500 error, and a response Error Message.",
+            "item": [
+                {
+                    "name": "Generate Uploading Url",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/generate-url",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/generate-url"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "Secret-Api-key"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"file_name\":\"image.png\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"code\": 200,\"success\": true, \"message\": \"Use This Url to Upload Your File\"}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\"code\": 500,\"success\": true,\"message\": \"Some Error Happened .. Please Contact With Developer\", \"data\": \"https:\/\/***.s3.us-east-2.amazonaws.com\/image.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=*************&X-Amz-Date=*********&X-Amz-SignedHeaders=****&X-Amz-Expires=**&X-Amz-Signature=*******\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Posted Data",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/get-data",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/get-data"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "Secret-Api-key"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"code\": 200,\"success\": true,\"message\": \"List of Uploaded Data\",\"data\": [{\"id\": 44,\"media\": [{\"id\": 4,\"file_path\": \"https:\/\/*****.s3.eu-north-1.amazonaws.com\/uploads\/V0I7fyD6z965Ryl3aI09I4o0Ojbm6vcufOHLYZuO.png\",\"mime_type\": \"image\/png\"}]},{\"id\": 45,\"media\": [{\"id\": 5,\"file_path\": \"https:\/\/*****.s3.eu-north-1.amazonaws.com\/uploads\/5bWyorRtyCg2nX1OfHCUgMFBBXZPg85YdiWqkh2V.png\",\"mime_type\": \"image\/png\" },{\"id\": 6,\"file_path\": \"https:\/\/*****.s3.eu-north-1.amazonaws.com\/uploads\/a6Q4Le7IpZeUJcsmfeaXoanmHqFoztq9Mu4YF9dp.png\",\"mime_type\": \"image\/png\"}]}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
